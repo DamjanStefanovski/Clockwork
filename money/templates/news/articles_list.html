@@ -1,0 +1,94 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1>Sporting News</h1>
+        <h2 class="text-muted">New York, NY</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <big class="pull-left column-header-team-name">New York Giants</big><p class="text-muted pull-right" style="padding:12px;margin-right:10px;"> Football</p>
+      <div class="clearfix"></div>
+      <hr>
+      <ul class="list-unstyled">
+        {% for NYG_article in NYG_articles %}
+          <li><h4>{{ NYG_article.title }}</h4></li>
+          <li>{{ NYG_article.description }}</li>
+          <br>
+          <li style="padding:15px;padding-left:0;"><a class="btn btn-primary btn-small pull-left" href="{{ NYG_article.url }}" role="button">View Article</a><sub class="pull-right">{{ NYG_article.publication_date }}</sub></li>
+          <br>
+          <hr>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <span><big class="pull-left column-header-team-name">New York Rangers</big><p class="text-muted pull-right" style="padding:15px"> Hockey</p></span>
+      <div class="clearfix"></div>
+      <hr>
+      <ul class="list-unstyled">
+        {% for NYR_article in NYR_articles %}
+          <li><h4>{{ NYR_article.title }}</h4></li>
+          <li>{{ NYR_article.description }}</li>
+          <br>
+          <li style="padding:15px;padding-left:0;"><a class="btn btn-primary pull-left" href="{{ NYR_article.url }}" role="button">View details &raquo;</a><sub class="pull-right">{{ NYR_article.publication_date }}</sub></li>
+          <br>
+          <hr>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <span><big class="pull-left column-header-team-name">New York Knicks</big><p class="text-muted pull-right" style="padding:15px"> Basketball</p></span>
+      <div class="clearfix"></div>
+      <hr>
+      <ul class="list-unstyled">
+        {% for NYK_article in NYK_articles %}
+          <li><h4>{{ NYK_article.title }}</h4></li>
+          <li>{{ NYK_article.summary }}</li>
+          <br>
+          <li style="padding:15px;padding-left:0;"><a class="btn btn-primary pull-left" href="{{ NYK_article.url }}" role="button">View details &raquo;</a><sub class="pull-right">{{ NYK_article.publication_date }}</sub></li>
+          <br>
+          <hr>
+        {% endfor %}
+      </ul>
+    </div>
+    <!-- <div class="col-md-4">
+      <h1>buttstuff</h1>
+      <hr>
+      <ul class="list-unstyled">
+      {% for article in articles %}
+          <h4>{{ article.title }}</h4>
+          <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+      {% endfor %}
+      </ul>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h1>other buttstuff</h1>
+      <hr>
+      <ul class="list-unstyled">
+	    {% for article in articles %}
+  				<h4>{{ article.title }}</h4>
+	        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+	    {% endfor %}
+			</ul>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div> -->
+  </div>
+</div>
+  <hr>
+
+  <footer>
+    <p>&copy; 2016 Company, Inc.</p>
+  </footer>
+</div> <!-- /container -->
+{% endblock %}

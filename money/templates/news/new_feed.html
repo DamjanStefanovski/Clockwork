@@ -1,0 +1,35 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1>News Feeds</h1>
+    <p>Create new feeds here.
+    <br>
+      don't be gay.
+    </p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <hr>
+        <button class="btn btn-default" type="submit" href="#" role="button">Submit &raquo;</button>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; 2016 Company, Inc.</p>
+  </footer>
+</div> <!-- /container -->
+{% endblock %}
