@@ -1,0 +1,53 @@
+svg{
+  stroke: white;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#rim {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+}
+
+.second-hand{
+  stroke:white;
+  stroke-width:3;
+}
+
+.minute-hand{
+  stroke:#E3648D;
+  stroke-width:7;
+  stroke-linecap:round;
+}
+
+.hour-hand{
+  stroke: #89cff0;
+  stroke-width:11;
+  stroke-linecap:round;
+}
+
+.hands-cover{
+  display: none;
+  stroke-width:3;
+  fill:#fff;
+}
+
+.second-tick{
+  /*display: none;*/
+  stroke-width:2;
+  fill:#000;  
+}
+
+.hour-tick{
+  stroke-width:6; //same as the miute hand
+}
+
+.second-label{
+  display: none;
+  font-size: 12px;
+}
+
+.hour-label{
+  display: none;
+  font-size: 24px;
+}

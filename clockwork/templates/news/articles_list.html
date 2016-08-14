@@ -3,19 +3,24 @@
 {% block content %}
 
 {% load static %}
-  
-  <div id="NYG_NewsWrapper" class="container-fluid">
 
-    <div class="col-sm-3"> 
-      <div class="row" style="background-color:rgba(137,207,240,0.2);">
-        <div class="col-sm-12" style="border-right: 1px solid #eee;padding:12px 16px 8px 16px;">
-          <span id="NYG_AccordionToggle" class="pull-right team-news-header">
-            <img class="team-news-header-logos" src="{% static '/clockwork/nyg_logo.png' %}" alt="My image" height="50px" width="auto" />
+  <div id="NYG_NewsWrapper">
+    <div class="col-sm-12"> 
+      <div class="row" style="padding: 3px 6px 0px 3px;">
+        <div class="col-sm-12 text-left" style="background-color:rgba(137,207,240,1);padding:5px;">
+          <span id="NYG_Accordion" class="team-news-header">
+            <img class="team-news-header-logos" src="{% static '/clockwork/images/nyg_logo.png' %}" alt="My image" height="50px" width="auto" />
+          </span>
+          <span id="NYR_Accordion" class="team-news-header">
+              <img class="team-news-header-logos" src="{% static '/clockwork/images/nyr_logo.png' %}" alt="My image" height="50px" width="auto" />
+          </span>
+          <span id="NYK_Accordion" class="team-news-header">
+              <img class="team-news-header-logos" src="{% static '/clockwork/images/nyk_logo.png' %}" alt="My image" height="50px" width="auto" />
           </span>
         </div>
       </div>
-      <div id="NYG_AccordionDiv" class="row" style="display:none;">
-        <div class="col-sm-12" style="height:555px;overflow:scroll;padding:4px;">
+      <div id="NYG_Accordion_Toggle" class="row" style="display:none;">
+        <div class="col-sm-12" style="overflow:scroll;padding:4px;">
           <ul class="list-unstyled">
             {% for NYG_article in NYG_articles %}
               <li><h4>{{ NYG_article.title }}</h4></li>
@@ -27,18 +32,44 @@
           </ul>
         </div>
       </div>
+      <div id="NYR_Accordion_Toggle" class="row" style="display:none;">
+        <div class="col-sm-12" style="overflow:scroll;padding:4px;">
+          <ul class="list-unstyled">
+            {% for NYR_article in NYR_articles %}
+              <li><h4>{{ NYR_article.title }}</h4></li>
+              <li class="article-description"><p>{{ NYR_article.description }}</p></li>
+              <br>
+              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYR_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYR_article.publication_date }}</i></li>
+              <hr>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div id="NYK_Accordion_Toggle" class="row" style="display:none;">
+        <div class="col-sm-12" style="overflow:scroll;padding:4px;">
+          <ul class="list-unstyled">
+            {% for NYK_article in NYK_articles %}
+              <li><h4>{{ NYK_article.title }}</h4></li>
+              <li class="article-description"><p>{{ NYK_article.summary }}</p></li>
+              <br>
+              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYK_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYK_article.publication_date }}</i></li>
+              <hr>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
 
       <div class="col-sm-9"></div>
 
       </div>
   </div>
 
-  <div id="NYR_NewsWrapper" class="container-fluid">
-    <div class="col-sm-3">
-      <div class="row" style="background-color:rgba(137,207,240,0.2);">
-        <div class="col-sm-12" style="border-right: 1px solid #eee;padding:12px 16px 8px 16px;">
-          <span id="NYR_AccordionToggle" class="pull-right team-news-header">
-              <img class="team-news-header-logos" src="{% static '/clockwork/nyr_logo.png' %}" alt="My image" height="50px" width="auto" />
+  <!-- <div id="NYR_NewsWrapper">
+    <div class="col-sm-12">
+      <div class="row" style="padding: 3px 6px 0px 3px;">
+        <div class="col-sm-12 text-right" style="background-color:rgba(137,207,240,1);padding:5px;">
+          <span id="NYR_AccordionToggle" class="team-news-header">
+              <img class="team-news-header-logos" src="{% static '/clockwork/images/nyr_logo.png' %}" alt="My image" height="50px" width="auto" />
           </span>
         </div>
       </div>
@@ -60,16 +91,15 @@
 
     </div>
   </div>
-  <div id="NYK_NewsWrapper" class="container-fluid">
+  <div id="NYK_NewsWrapper">
 
-    <div class="col-sm-3">
-      <div class="row" style="background-color:rgba(137,207,240,0.2);">
-        <div class="col-sm-12" style="border-right: 1px solid #eee;padding:12px 16px 8px 16px;">
-          <big class=>
-            <span id="NYK_AccordionToggle" class="pull-right team-news-header">
-              <img class="team-news-header-logos" src="{% static '/clockwork/nyk_logo.png' %}" alt="My image" height="50px" width="auto" />
+    <div class="col-sm-12">
+      <div class="row" style="padding: 3px 6px 0px 3px;">
+        <div class="col-sm-12 text-right" style="background-color:rgba(137,207,240,1);padding:5px;">
+            <span id="NYK_AccordionToggle" class="team-news-header">
+              <img class="team-news-header-logos" src="{% static '/clockwork/images/nyk_logo.png' %}" alt="My image" height="50px" width="auto" />
             </span>
-          </big>
+          </div>
         </div>
       </div>
       <div id="NYK_AccordionDiv" class="row" style="display:none;">
@@ -88,8 +118,7 @@
 
       <div class="col-sm-9"></div>
 
-    </div>
+    </div> -->
   </div>
-
 
 {% endblock %}

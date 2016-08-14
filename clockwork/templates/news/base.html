@@ -10,31 +10,65 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>ClockWork</title>
+    <title>clockwork</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
     <link rel="stylesheet" type="text/css" href="{% static '/clockwork/css/clock.css' %}">
 
     <!-- Font. Awesome. -->
     <script src="https://use.fontawesome.com/9edb449a82.js"></script>
 
     <style>
+        html,body {
+          height: 100%;
+          width: 100%;
+          background-image: url({% static "/clockwork/images/nuclear_flowers.png" %});
+          background-attachment: fixed;
+          background-size: cover;
+
+          overflow: hidden;
+        }
+        #sidebarWrapper{
+          position: fixed;
+          top:0;bottom:5%;left: 0;
+          height: 100%;
+          background-color: none;
+          display: none;
+          max-width: 20%;
+        }
+        #ClockWrapper {
+          position:fixed;
+          top:63px;
+          bottom:63px;
+          left: 0;
+          width:100%;
+          height:100%;
+          overflow:hidden;
+          background-color:none;
+          z-index:10000;
+          padding:25px;
+        }
       .top-nav {
         width: 100%;
-        height:10px;
-        background-color:black;
-        position: absolute;
+        height:63px;
+        background-color:#89cff0;
+        position: fixed;
         top:0;
-        z-index: ;
+        left:0;
+        z-index: 10000;
       }
       .bottom-nav {
-        width:100%;
-        height:40px;
-        position: absolute;
-        top:10px;
+        width: 100%;
+        height:63px;
+        background-color:#89cff0;
+        position: fixed;
+        bottom:0;
+        left:0;
+        z-index: 10000;
       }
       #SecondsTimeValue {
         position: static;
@@ -49,10 +83,6 @@
         right:0;
         z-index: 999999; 
       }
-      html,body {
-        height: 100%;
-        width: 100%;
-      }
       .jumbotron {
         background-color: #EA8AA1;
         color:white;
@@ -64,25 +94,16 @@
       .team-news-header-logos {
         padding:0px;
       }
-      #ClockWrapper {
-        width:100%;
-        overflow:hidden;
-        background-color:white;
-        position:relative;
-        z-index:1000;
-        padding:25px;
-      }
 
       #NYG_NewsWrapper, #NYR_NewsWrapper, #NYK_NewsWrapper {
-        position: static;
-        padding:2px;
-        z-index: 800;
+        padding-left:0px;
+        display: block;
       }
 
-      #NYG_AccordionToggle,#NYR_AccordionToggle,#NYK_AccordionToggle {
+      #NYG_Accordion,#NYR_Accordion,#NYK_Accordion {
         cursor: pointer;
       }
-      #NYG_AccordionDiv, #NYR_AccordionDiv, #NYK_AccordionDiv {
+      #NYG_Accordion_Toggle, #NYR_Accordion_Toggle, #NYK_Accordion_Toggle {
         background-color:white;
       }
 
@@ -114,7 +135,7 @@
       .fa-anchor {
         font-size:32px;
       }
-      .fa-asterisk {
+      .fa-rocket {
         font-size:36px;
         color:#EA8AA1;
       }
@@ -148,7 +169,7 @@
           background-size: cover;
       }
       .parallax.bgimg {
-          background-image: url({% static "clockwork/images/mar28th.png" %});
+          background-image: url({% static "/clockwork/images/nuclear_flowers.png" %});
       }
 
     </style>
@@ -157,11 +178,25 @@
   <body>
 
     <div class="top-nav"></div>
+    <div id="ClockWrapper"> 
+      <video id="myVideo1" width="" height="" autoplay loop style="position:fixed;top:0;left:0;width:100%;">
+        <source src="{% static '/clockwork/images/oz_to_color.mp4' %}" type="video/mp4">
+      </video>
+      
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div id="clocktower"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <div class="bottom-nav">
       <div class="container-fluid">
         <div class="pull-right">
-          <sup><a href="{% url 'feeds_list' %}"><i class="fa fa-asterisk" aria-hidden="true"></i></a></sup>
-          
+          <!-- <a href="{% url 'feeds_list' %}"><i class="fa fa-rocket" aria-hidden="true"></i></a> -->
         </div>
       </div>
     </div>
@@ -190,26 +225,17 @@
           </div>
         </div>
 
-      <div class="parallax bgimg" style="position:relative;z-index:900;width:100%;height:140px;"></div>
+      <div class="parallax bgimg" style="position:relative;z-index:900;width:100%;height:100%;"></div>
 
       </div>
     </div>
   </div>
 
-    <div id="ClockWrapper">      
-      
-      <div class="container-fluid">
-        <div class="row text-center">
-          <div class="col-md-12">
-            <div id="clocktower"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="parallax bgimg" style="position:relative;z-index:3000;width:100%;height:100%;"></div>
 
-    <div class="parallax" style="position:relative;z-index:2000;">
+    <div class="parallax" style="position:relative;z-index:200000;">
       <div class="container-fluid">
         <div class="row text-center">
           <div class="col-sm-12">
@@ -217,14 +243,18 @@
           </div>
         </div>
         <div class="row">
-          {% block content %}
-          {% endblock %}
+          <div class="col-sm-3">
+            <div id="sidebarWrapper">
+            {% block content %}
+            {% endblock %}
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- <div class="parallax" style="position:relative;z-index:2500;height:600px;">
-      <video id="myVideo1" width="" height="" autoplay loop style="position:absolute;left:0;width:100%">
+    <!-- <div class="parallax bgimg" style="position:relative;z-index:2500;height:300px;">
+      <video id="myVideo1" width="" height="" autoplay loop style="position:fixed;top:0;left:0;width:100%">
         <source src="{% static 'clockwork/images/oz_to_color.mp4' %}" type="video/mp4">
       </video>
     </div> -->
@@ -238,25 +268,45 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
+    <script type="{% static '/clockwork/js/jquery.mousewheel.min.js' %}"></script>
+
+
     <script type="text/javascript">
 
     $(document).ready(function () {
+      $(window).on('mousewheel', function(e) {
+          var dY;
+          e.preventDefault();
+          // console.log(e.originalEvent.deltaY);
+          dY = parseInt(e.originalEvent.deltaY);
+          console.log(dY);
+          if(dY > 0){
+            $('div#sidebarWrapper').css("display", "none");
+            $('#ClockWrapper').fadeIn();
+          }else if(dY < 0){
+            $('div#sidebarWrapper').css("display", "block");
+            $('#ClockWrapper').fadeOut();
+          }
+      });
 
       if(window.location.pathname=='/news/'){
         $('.fa-anchor').hide();
       };
 
-      $('#NYG_AccordionToggle').click(function(){
-        $('#NYG_AccordionDiv').toggle();
+      // sports content, accordion toggle
+      $('#NYG_Accordion, #NYR_Accordion, #NYK_Accordion').click(function(e){
+        var target = $(e.currentTarget);
+        console.log(target.context.id);
+        $('#'+target.context.id+'_Toggle').toggle();
       });
 
-      $('#NYR_AccordionToggle').click(function(){
-        $('#NYR_AccordionDiv').toggle();
-      });
+      // $('#NYR_AccordionToggle').click(function(){
+      //   $('#NYR_AccordionDiv').toggle();
+      // });
 
-      $('#NYK_AccordionToggle').click(function(){
-        $('#NYK_AccordionDiv').toggle();
-      });
+      // $('#NYK_AccordionToggle').click(function(){
+      //   $('#NYK_AccordionDiv').toggle();
+      // });
       
     });
 
@@ -264,7 +314,4 @@
 
     <!-- d3js clock -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="{% static 'clockwork/js/clockwork.js' %}"></script>
-  </body>
-</html>
-
+    <script src="{% static '/clockwork/js/clock.js' %}"></script>
