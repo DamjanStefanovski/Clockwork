@@ -34,7 +34,6 @@ def new_feed(request):
 
 			feedData = feedparser.parse(feed.url)
 
-			#set fields
 			feed.title = feedData.feed.title
 			feed.save()
 
@@ -52,8 +51,8 @@ def new_feed(request):
 					article.summary = ""
 				d=datetime.datetime(*(entry.published_parsed[0:6]))
 				dateString = d.strftime('%Y-%m-%d %H:%M:%S')
-				
 				article.publication_date = dateString
+				
 				article.feed = feed
 				article.save()
 

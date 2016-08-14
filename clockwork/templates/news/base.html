@@ -1,5 +1,4 @@
-(% load staticfiles %}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,54 +10,224 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>N.Y.sports</title>
+    <title>ClockWork</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/clockwork/css/clock.css' %}">
+
+    <!-- Font. Awesome. -->
+    <script src="https://use.fontawesome.com/9edb449a82.js"></script>
 
     <style>
-      .column-header-team-name {
-        font-size: 42px;
-        font-weight: bolder;
+      .top-nav {
+        width: 100%;
+        height:10px;
+        background-color:black;
+        position: absolute;
+        top:0;
+        z-index: ;
       }
+      .bottom-nav {
+        width:100%;
+        height:40px;
+        position: absolute;
+        top:10px;
+      }
+      #SecondsTimeValue {
+        position: static;
+        top:0px;
+        right:0px;
+        z-index: 99999;
+        /*width:100%;*/
+      }
+      #SecondsTimeValue_Inline {
+        position: static;
+        bottom:0;
+        right:0;
+        z-index: 999999; 
+      }
+      html,body {
+        height: 100%;
+        width: 100%;
+      }
+      .jumbotron {
+        background-color: #EA8AA1;
+        color:white;
+      }
+      .team-news-header {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      .team-news-header-logos {
+        padding:0px;
+      }
+      #ClockWrapper {
+        width:100%;
+        overflow:hidden;
+        background-color:white;
+        position:relative;
+        z-index:1000;
+        padding:25px;
+      }
+
+      #NYG_NewsWrapper, #NYR_NewsWrapper, #NYK_NewsWrapper {
+        position: static;
+        padding:2px;
+        z-index: 800;
+      }
+
+      #NYG_AccordionToggle,#NYR_AccordionToggle,#NYK_AccordionToggle {
+        cursor: pointer;
+      }
+      #NYG_AccordionDiv, #NYR_AccordionDiv, #NYK_AccordionDiv {
+        background-color:white;
+      }
+
+      .article-description {
+        min-height:50px;
+        max-height:60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #viewExistingNewsFeedListWrapper {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: white;
+      }
+      #addNewsFeedWrapper {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: white;
+      }
+
+      /*font awesome overrides*/
+      .fa-anchor {
+        font-size:32px;
+      }
+      .fa-asterisk {
+        font-size:36px;
+        color:#EA8AA1;
+      }
+      .fa-minus {
+        font-size: 32px;
+        padding:10px;
+        color:black;
+        cursor: pointer;
+      }
+      .fa-plus {
+        font-size: 32px;
+        padding:10px;
+        color:black;
+        cursor: pointer;
+      }
+
+
+      /*PARALLAX*/
+
+      .parallax {
+          /* The image used */
+          background-color:none;
+
+          /* Full height */
+          height: 100%;
+
+          /* Create the parallax scrolling effect */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      .parallax.bgimg {
+          background-image: url({% static "clockwork/images/mar28th.png" %});
+      }
+
     </style>
   </head>
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="top-nav"></div>
+    <div class="bottom-nav">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">N.Y.sports</a>
+        <div class="pull-right">
+          <sup><a href="{% url 'feeds_list' %}"><i class="fa fa-asterisk" aria-hidden="true"></i></a></sup>
+          
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        	<ul class="nav navbar-nav">
-	          <li class="active"><a href="{% url 'articles_list' %}">Home</a></li>
-	          <li><a href="{% url 'feeds_list' %}">Feeds</a></li>
-        	</ul>
-          <!-- <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form> -->
-        </div><!--/.navbar-collapse -->
       </div>
-    </nav>
+    </div>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid">
+      <div class="col-sm-2">
+        <div class="row">
+              <a href="{% url 'articles_list' %}"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-sm-12">
+            <div style="width:100%;background-color:black;">
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="parallax">
+        <div class="row text-right">
+          <div class="col-sm-12">
+            <!-- <div id="SecondsTimeValue"></div> -->
+          </div>
+        </div>
+
+          </div>
+        </div>
+
+      <div class="parallax bgimg" style="position:relative;z-index:900;width:100%;height:140px;"></div>
+
+      </div>
+    </div>
+  </div>
+
+    <div id="ClockWrapper">      
+      
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div id="clocktower"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parallax bgimg" style="position:relative;z-index:3000;width:100%;height:100%;"></div>
+
+    <div class="parallax" style="position:relative;z-index:2000;">
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-sm-12">
+            <div id="SecondsTimeValue"></div>
+          </div>
+        </div>
+        <div class="row">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="parallax" style="position:relative;z-index:2500;height:600px;">
+      <video id="myVideo1" width="" height="" autoplay loop style="position:absolute;left:0;width:100%">
+        <source src="{% static 'clockwork/images/oz_to_color.mp4' %}" type="video/mp4">
+      </video>
+    </div> -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -68,6 +237,34 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+      if(window.location.pathname=='/news/'){
+        $('.fa-anchor').hide();
+      };
+
+      $('#NYG_AccordionToggle').click(function(){
+        $('#NYG_AccordionDiv').toggle();
+      });
+
+      $('#NYR_AccordionToggle').click(function(){
+        $('#NYR_AccordionDiv').toggle();
+      });
+
+      $('#NYK_AccordionToggle').click(function(){
+        $('#NYK_AccordionDiv').toggle();
+      });
+      
+    });
+
+    </script>
+
+    <!-- d3js clock -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="{% static 'clockwork/js/clockwork.js' %}"></script>
   </body>
 </html>
 
