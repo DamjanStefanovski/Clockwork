@@ -1,6 +1,6 @@
 var radians = 0.0174532925, 
-  clockRadius = 240,
-  margin = 60,
+  clockRadius = 300,
+  margin = 75,
   width = (clockRadius+margin)*2,
     height = (clockRadius+margin)*2,
     hourHandLength = 2*clockRadius/3,

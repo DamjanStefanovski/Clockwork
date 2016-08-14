@@ -29,8 +29,9 @@
           background-image: url({% static "/clockwork/images/nuclear_flowers.png" %});
           background-attachment: fixed;
           background-size: cover;
-
+          background-position: center;
           overflow: hidden;
+          /*background-opacity:0.2;*/
         }
         #sidebarWrapper{
           position: fixed;
@@ -63,7 +64,7 @@
       }
       .bottom-nav {
         width: 100%;
-        height:63px;
+        /*height:63px;*/
         background-color:#89cff0;
         position: fixed;
         bottom:0;
@@ -185,7 +186,8 @@
       
       <div class="container-fluid">
         <div class="row text-center">
-          <div class="col-md-12">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9">
             <div id="clocktower"></div>
           </div>
         </div>
@@ -225,7 +227,7 @@
           </div>
         </div>
 
-      <div class="parallax bgimg" style="position:relative;z-index:900;width:100%;height:100%;"></div>
+      <!-- <div class="parallax bgimg" style="position:relative;z-index:900;width:100%;height:100%;"></div> -->
 
       </div>
     </div>
@@ -233,7 +235,7 @@
 
     
 
-    <div class="parallax bgimg" style="position:relative;z-index:3000;width:100%;height:100%;"></div>
+    <!-- <div class="parallax bgimg" style="position:relative;z-index:3000;width:100%;height:100%;"></div> -->
 
     <div class="parallax" style="position:relative;z-index:200000;">
       <div class="container-fluid">
@@ -272,20 +274,20 @@
 
 
     <script type="text/javascript">
-
+    $('div#sidebarWrapper').fadeIn();
     $(document).ready(function () {
       $(window).on('mousewheel', function(e) {
           var dY;
           e.preventDefault();
           // console.log(e.originalEvent.deltaY);
           dY = parseInt(e.originalEvent.deltaY);
-          console.log(dY);
           if(dY > 0){
-            $('div#sidebarWrapper').css("display", "none");
             $('#ClockWrapper').fadeIn();
+            $('div#sidebarWrapper').fadeIn();
+            // $('div#sidebarWrapper').css('display','none');
           }else if(dY < 0){
-            $('div#sidebarWrapper').css("display", "block");
-            $('#ClockWrapper').fadeOut();
+            // $('div#sidebarWrapper').css('display','none');
+            $('#ClockWrapper').css('display','none');
           }
       });
 

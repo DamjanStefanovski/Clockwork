@@ -19,106 +19,52 @@
           </span>
         </div>
       </div>
-      <div id="NYG_Accordion_Toggle" class="row" style="display:none;">
-        <div class="col-sm-12" style="overflow:scroll;padding:4px;">
-          <ul class="list-unstyled">
-            {% for NYG_article in NYG_articles %}
-              <li><h4>{{ NYG_article.title }}</h4></li>
-              <li class="article-description"><p>{{ NYG_article.description }}</p></li>
-              <br>
-              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYG_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYG_article.publication_date }}</i></li>
-              <hr>
-            {% endfor %}
-          </ul>
+
+      <div class="col-sm-12" style="padding-left:0;">
+
+        <div id="NYG_Accordion_Toggle" class="row">
+          <div class="col-sm-12" style="overflow:scroll;padding: 2px 8px 2px 8px">
+            <ul class="list-unstyled">
+              {% for NYG_article in NYG_articles %}
+                <li><h4>{{ NYG_article.title }}</h4></li>
+                <li class="article-description"><p>{{ NYG_article.description }}</p></li>
+                <br>
+                <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYG_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYG_article.publication_date }}</i></li>
+                <hr>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-      </div>
-      <div id="NYR_Accordion_Toggle" class="row" style="display:none;">
-        <div class="col-sm-12" style="overflow:scroll;padding:4px;">
-          <ul class="list-unstyled">
-            {% for NYR_article in NYR_articles %}
-              <li><h4>{{ NYR_article.title }}</h4></li>
-              <li class="article-description"><p>{{ NYR_article.description }}</p></li>
-              <br>
-              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYR_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYR_article.publication_date }}</i></li>
-              <hr>
-            {% endfor %}
-          </ul>
+        <div id="NYR_Accordion_Toggle" class="row" style="display:none;">
+          <div class="col-sm-12" style="overflow:scroll;padding:4px;">
+            <ul class="list-unstyled">
+              {% for NYR_article in NYR_articles %}
+                <li><h4>{{ NYR_article.title }}</h4></li>
+                <li class="article-description"><p>{{ NYR_article.description }}</p></li>
+                <br>
+                <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYR_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYR_article.publication_date }}</i></li>
+                <hr>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-      </div>
-      <div id="NYK_Accordion_Toggle" class="row" style="display:none;">
-        <div class="col-sm-12" style="overflow:scroll;padding:4px;">
-          <ul class="list-unstyled">
-            {% for NYK_article in NYK_articles %}
-              <li><h4>{{ NYK_article.title }}</h4></li>
-              <li class="article-description"><p>{{ NYK_article.summary }}</p></li>
-              <br>
-              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYK_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYK_article.publication_date }}</i></li>
-              <hr>
-            {% endfor %}
-          </ul>
+        <div id="NYK_Accordion_Toggle" class="row" style="display:none;">
+          <div class="col-sm-12" style="overflow:scroll;padding:4px;">
+            <ul class="list-unstyled">
+              {% for NYK_article in NYK_articles %}
+                <li><h4>{{ NYK_article.title }}</h4></li>
+                <li class="article-description"><p>{{ NYK_article.summary }}</p></li>
+                <br>
+                <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYK_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYK_article.publication_date }}</i></li>
+                <hr>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="col-sm-9"></div>
 
-      </div>
-  </div>
 
-  <!-- <div id="NYR_NewsWrapper">
-    <div class="col-sm-12">
-      <div class="row" style="padding: 3px 6px 0px 3px;">
-        <div class="col-sm-12 text-right" style="background-color:rgba(137,207,240,1);padding:5px;">
-          <span id="NYR_AccordionToggle" class="team-news-header">
-              <img class="team-news-header-logos" src="{% static '/clockwork/images/nyr_logo.png' %}" alt="My image" height="50px" width="auto" />
-          </span>
-        </div>
-      </div>
-      <div id="NYR_AccordionDiv" class="row" style="display:none;">
-        <div class="col-sm-12" style="height:555px;overflow:scroll;padding:4px;">
-          <ul class="list-unstyled">
-            {% for NYR_article in NYR_articles %}
-              <li><h4>{{ NYR_article.title }}</h4></li>
-              <li class="article-description"><p>{{ NYR_article.description }}</p></li>
-              <br>
-              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYR_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYR_article.publication_date }}</i></li>
-              <hr>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-sm-9"></div>
-
-    </div>
-  </div>
-  <div id="NYK_NewsWrapper">
-
-    <div class="col-sm-12">
-      <div class="row" style="padding: 3px 6px 0px 3px;">
-        <div class="col-sm-12 text-right" style="background-color:rgba(137,207,240,1);padding:5px;">
-            <span id="NYK_AccordionToggle" class="team-news-header">
-              <img class="team-news-header-logos" src="{% static '/clockwork/images/nyk_logo.png' %}" alt="My image" height="50px" width="auto" />
-            </span>
           </div>
         </div>
       </div>
-      <div id="NYK_AccordionDiv" class="row" style="display:none;">
-        <div class="col-sm-12" style="height:555px;overflow:scroll;padding:4px;">
-          <ul class="list-unstyled">
-            {% for NYK_article in NYK_articles %}
-              <li><h4>{{ NYK_article.title }}</h4></li>
-              <li class="article-description"><p>{{ NYK_article.summary }}</p></li>
-              <br>
-              <li style="padding:15px;padding-left:0;"><a class="pull-left" href="{{ NYK_article.url }}" role="button">Full Article &raquo;</a><i class="pull-right text-muted">{{ NYK_article.publication_date }}</i></li>
-              <hr>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-sm-9"></div>
-
-    </div> -->
-  </div>
-
 {% endblock %}
